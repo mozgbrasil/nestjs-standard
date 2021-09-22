@@ -12,13 +12,22 @@
 nest --help
 nest new nestjs-standard
 
-yarn add joi class-validator class-transformer @nestjs/sequelize sequelize sequelize-typescript mysql2 @nestjs/typeorm typeorm @nestjs/mongoose mongoose @nestjs/config js-yaml cache-manager @nestjs/schedule @nestjs/bull bull cookie-parser @nestjs/event-emitter compression @nestjs/axios express-session hbs @nestjs/passport passport passport-local @casl/ability bcrypt helmet csurf @nestjs/throttler @nestjs/graphql graphql apollo-server-express @nestjs/websockets @nestjs/platform-socket.io @nestjs/microservices redis mqtt nats amqplib amqp-connection-manager kafkajs @grpc/grpc-js @grpc/proto-loader @nestjs/swagger swagger-ui-express
+yarn add joi class-validator class-transformer @nestjs/sequelize sequelize sequelize-typescript mysql2 @nestjs/typeorm typeorm @nestjs/mongoose mongoose @nestjs/config js-yaml cache-manager @nestjs/schedule @nestjs/bull bull cookie-parser @nestjs/event-emitter compression @nestjs/axios express-session hbs @nestjs/passport passport passport-local @casl/ability bcrypt helmet csurf @nestjs/throttler @nestjs/graphql graphql apollo-server-express @nestjs/websockets @nestjs/platform-socket.io @nestjs/microservices redis mqtt nats amqplib amqp-connection-manager kafkajs @grpc/grpc-js @grpc/proto-loader @nestjs/swagger swagger-ui-express @nestjs/terminus
 
 yarn add @types/joi @types/sequelize @types/js-yaml @types/cron @types/cache-manager @types/bull @types/cookie-parser @types/multer @types/express-session @types/passport-local @types/bcrypt -D
 
 nest g resource cats
 
-nest generate resource users
+nest g resource users
+
+nest g module auth
+nest g service auth
+
+nest g module casl
+nest g class casl/casl-ability.factory
+
+nest g controller health
+
 ```
 
 - https://courses.nestjs.com/
