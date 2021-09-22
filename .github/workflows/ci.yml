@@ -36,9 +36,9 @@ jobs:
         with:
           node-version: '12'
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
       - name: Build web assets
-        run: npm run build
+        run: yarn run build
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -55,9 +55,9 @@ jobs:
         with:
           node-version: '12'
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
       - name: Run ESLint and Prettier
-        run: npm run lint
+        run: yarn run lint
   test:
     name: Test
     runs-on: ubuntu-20.04
@@ -69,9 +69,9 @@ jobs:
         with:
           node-version: '12'
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
       - name: Run unit tests
-        run: npm run test
+        run: yarn run test
   e2e:
     name: E2E
     runs-on: ubuntu-20.04
@@ -83,27 +83,45 @@ jobs:
         with:
           node-version: '12'
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
       - name: Run end-to-end tests
-        run: npm run test:e2e
-  # deploy:
-  #   name: Deploy
-  #   if: github.ref == 'refs/heads/develop'
-  #   needs: [build-web]
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #     - name: Download
-  #       uses: actions/download-artifact@v2
-  #       with:
-  #         name: dist
-  #         path: dist
-  #     - name: Vercel Action
-  #       uses: amondnet/vercel-action@v20.0.0
-  #       with:
-  #         vercel-token: ${{ secrets.VERCEL_TOKEN }}
-  #         github-comment: false
-  #         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-  #         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-  #         vercel-args: '--prod'
+        run: yarn run test:e2e
+  deploy:
+    name: Deploy
+    if: github.ref == 'refs/heads/develop'
+    needs: [build-web]
+    runs-on: ubuntu-20.04
+    steps:
+      # Runs a single command using the runners shell
+      - name: 👇️ Run a one-line script
+        run: echo Hello, world!
+      # Runs a set of commands using the runners shell
+      - name: 👇️ Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+      - name: 👇️ Run tests
+        run: |
+          set -o xtrace
+          echo "===== a ======"
+          echo "===== b ======"
+          pwd
+          ls
+          git --version
+          env
+        # Runs ...
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+      - name: Vercel Action
+        uses: amondnet/vercel-action@v20.0.0
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-comment: false
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-args: '--prod'
