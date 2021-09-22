@@ -5,12 +5,13 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 async function bootstrap() {
   //
 
-  //   const app = await NestFactory.create(AppModule);
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create(AppModule);
 
   //
 
-  app.setViewEngine('hbs');
+  // FAIL test/app.e2e-spec.ts
+  // const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  // app.setViewEngine('hbs');
 
   //
 
