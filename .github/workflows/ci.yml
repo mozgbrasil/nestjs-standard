@@ -141,7 +141,7 @@ jobs:
   deploy_heroku:
     name: Deploy Heroku
     if: github.ref == 'refs/heads/develop'
-    needs: [deploy]
+    needs: [deploy_vercel]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
