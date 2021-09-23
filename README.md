@@ -12,9 +12,9 @@
 nest --help
 nest new nestjs-standard
 
-yarn add joi class-validator class-transformer @nestjs/sequelize sequelize sequelize-typescript mysql2 @nestjs/typeorm typeorm @nestjs/mongoose mongoose @nestjs/config js-yaml cache-manager @nestjs/schedule @nestjs/bull bull cookie-parser @nestjs/event-emitter compression @nestjs/axios express-session hbs @nestjs/passport passport passport-local @casl/ability bcrypt helmet csurf @nestjs/throttler @nestjs/graphql graphql apollo-server-express @nestjs/websockets @nestjs/platform-socket.io @nestjs/microservices redis mqtt nats amqplib amqp-connection-manager kafkajs @grpc/grpc-js @grpc/proto-loader @nestjs/swagger swagger-ui-express @nestjs/terminus
+yarn add joi class-validator class-transformer @nestjs/sequelize sequelize sequelize-typescript mysql2 @nestjs/typeorm typeorm @nestjs/mongoose mongoose @nestjs/config js-yaml cache-manager @nestjs/schedule @nestjs/bull bull cookie-parser @nestjs/event-emitter compression @nestjs/axios express-session hbs @nestjs/passport passport passport-local @nestjs/jwt passport-jwt @casl/ability bcrypt helmet csurf @nestjs/throttler @nestjs/graphql graphql apollo-server-express @nestjs/websockets @nestjs/platform-socket.io @nestjs/microservices redis mqtt nats amqplib amqp-connection-manager kafkajs @grpc/grpc-js @grpc/proto-loader @nestjs/swagger swagger-ui-express @nestjs/terminus
 
-yarn add @types/joi @types/sequelize @types/js-yaml @types/cron @types/cache-manager @types/bull @types/cookie-parser @types/multer @types/express-session @types/passport-local @types/bcrypt -D
+yarn add @types/joi @types/sequelize @types/js-yaml @types/cron @types/cache-manager @types/bull @types/cookie-parser @types/multer @types/express-session @types/passport-local @types/passport-jwt @types/bcrypt -D
 
 nest g resource cats
 
@@ -32,18 +32,19 @@ nest g controller health
 
 - https://courses.nestjs.com/
 - https://github.com/nestjs/nest/tree/master/sample
-- http://localhost:3000/
-- http://localhost:3000/cats
-- http://localhost:3000/cats/1
-- http://localhost:3000/cats/a
-- http://localhost:3000/api/
-- http://localhost:3000/profile
+
+- http://localhost:3003/
+- http://localhost:3004/api/
 
 - https://nestjs-labs.herokuapp.com/
 - https://nestjs-labs.herokuapp.com/api/
 
 ```
-./app.sh test_enpoints
+curl -X POST -H "Content-Type: application/json" -d '{"name":"jon","age":11,"breed":"bred"}' http://localhost:3004/cats
+
+curl -X POST http://localhost:3004/auth/login -d '{"username": "john", "password": "changeme"}' -H "Content-Type: application/json"
+
+curl http://localhost:3004/profile -H "Authorization: Bearer <Bearer>"
 ```
 
 ## Contribuição
