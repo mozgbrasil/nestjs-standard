@@ -16,6 +16,8 @@
 # VERCEL_PROJECT_ID: You find the project id in the cat .vercel/project.json file.
 # VERCEL_ORG_ID: You find the organization id in the cat .vercel/project.json file.
 #
+# HEROKU_API_KEY:
+#
 
 name: 👇️ CI -> Vercel
 on:
@@ -115,8 +117,8 @@ jobs:
         run: yarn install
       - name: Run end-to-end tests
         run: yarn run test:e2e
-  deploy:
-    name: Deploy
+  deploy_vercel:
+    name: Deploy Vercel
     if: github.ref == 'refs/heads/develop'
     needs: [build-web]
     runs-on: ubuntu-20.04
@@ -136,3 +138,15 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-args: '--prod'
+deploy_heroku:
+  name: Deploy Heroku
+  if: github.ref == 'refs/heads/develop'
+  needs: [deploy]
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: 'nestjs-labs'
+        heroku_email: 'mozgbrasil@gmail.com'
