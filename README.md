@@ -36,6 +36,9 @@ nest g controller health
 - http://localhost:3003/
 - http://localhost:3004/api/
 
+- https://nestjs-labs.vercel.app/
+- https://nestjs-labs.vercel.app/api/
+
 - https://nestjs-labs.herokuapp.com/
 - https://nestjs-labs.herokuapp.com/api/
 
