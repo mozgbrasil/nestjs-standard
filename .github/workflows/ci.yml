@@ -117,7 +117,7 @@ jobs:
         run: yarn install
       - name: Run end-to-end tests
         run: yarn run test:e2e
-  deploy_vercel:
+  deploy-vercel:
     name: Deploy Vercel
     if: github.ref == 'refs/heads/develop'
     needs: [build-web]
@@ -138,10 +138,10 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-args: '--prod'
-  deploy_heroku:
+  deploy-heroku:
     name: Deploy Heroku
     if: github.ref == 'refs/heads/develop'
-    needs: [deploy_vercel]
+    needs: [build-web]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
