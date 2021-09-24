@@ -148,16 +148,16 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: 'nestjs-labs'
-          heroku_email: 'mozgbrasil@gmail.com'
-  deploy-netlify:
-    name: Deploy Netlify
-    if: github.ref == 'refs/heads/develop'
-    needs: [build-web]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: jsmrcaga/action-netlify-deploy@v1.1.0
-        with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_TO_PROD: true
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+  # deploy-netlify:
+  #   name: Deploy Netlify
+  #   if: github.ref == 'refs/heads/develop'
+  #   needs: [build-web]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: jsmrcaga/action-netlify-deploy@v1.1.0
+  #       with:
+  #         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  #         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  #         NETLIFY_DEPLOY_TO_PROD: true
