@@ -10,9 +10,15 @@ import { HealthController } from './health/health.controller';
 import { HttpExceptionFilter } from './exceptions/http-exception.filter';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { LoggingInterceptor } from './core/interceptors/logging.interceptor';
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import {
+  Module,
+  NestModule,
+  MiddlewareConsumer,
+  ValidationPipe,
+} from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 import { UsersModule } from './users/users.module';
+import { RolesGuard } from './common/guards/roles.guard';
 
 @Module({
   imports: [
@@ -31,19 +37,20 @@ import { UsersModule } from './users/users.module';
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
     },
-    // {
+    // { // @TODO
     //   provide: APP_PIPE,
     //   useClass: ValidationPipe,
     // },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
     // {
     //   // Enable authentication globally
     //   provide: APP_GUARD,
     //   useClass: JwtAuthGuard,
     // },
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: RolesGuard,
-    // },
+
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggingInterceptor,
