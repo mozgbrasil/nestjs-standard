@@ -27,10 +27,10 @@ import { UsersModule } from './users/users.module';
   providers: [
     AppService,
     DogHealthIndicator,
-    // {
-    //   provide: APP_FILTER,
-    //   useClass: HttpExceptionFilter,
-    // },
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
     // {
     //   provide: APP_PIPE,
     //   useClass: ValidationPipe,

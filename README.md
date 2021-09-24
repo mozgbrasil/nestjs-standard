@@ -45,7 +45,6 @@ nest g controller health
 - https://nestjs-standard.herokuapp.com/api/
 
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"name":"jon","age":11,"breed":"bred"}' http://localhost:3004/cats
 
 curl -X POST http://localhost:3004/auth/login -d '{"username": "john", "password": "changeme"}' -H "Content-Type: application/json"
 
@@ -74,7 +73,13 @@ code --new-window .
 
 ## Executando no container
 
-#
+- Utilize o container do Visual Studio Code
+
+## Executando na nuvem:
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/mozgbrasil/nestjs-standard/tree/develop) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/mozgbrasil/nestjs-standard/tree/develop) [![Deploy with Vercel](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mozgbrasil/nestjs-standard/tree/develop) [![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run?git_repo=https://github.com/mozgbrasil/nestjs-standard/tree/develop)
+
+# Nest
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>

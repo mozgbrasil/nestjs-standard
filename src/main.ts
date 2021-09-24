@@ -11,7 +11,8 @@ import helmet from 'helmet';
 import * as csurf from 'csurf';
 
 export function logger(req: Request, res: Response, next: NextFunction) {
-  console.log(`Logger Main Request...`);
+  console.table([{ logger_req: req, logger_res: res }]);
+  console.log(`Logger Main: `);
   next();
 }
 

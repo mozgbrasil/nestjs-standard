@@ -8,25 +8,32 @@ import {
   ParseIntPipe,
   Delete,
   UseInterceptors,
+  UseFilters,
+  ForbiddenException,
 } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { LoggingInterceptor } from '../core/interceptors/logging.interceptor';
 import { Cat } from './interfaces/cat.interface';
+import { HttpExceptionFilter } from '../exceptions/http-exception.filter';
 
+// @UseFilters(new HttpExceptionFilter())
 // @UseInterceptors(LoggingInterceptor)
 @Controller('cats')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Post()
+  // @UseFilters(new HttpExceptionFilter())
   async create(@Body() createCatDto: CreateCatDto) {
+    // throw new ForbiddenException();
     this.catsService.create(createCatDto);
   }
 
   @Get()
   async findAll(): Promise<Cat[]> {
+    // throw new ForbiddenException();
     return this.catsService.findAll();
   }
 
