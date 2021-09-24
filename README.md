@@ -38,11 +38,11 @@ nest g controller health
 - http://localhost:3003/
 - http://localhost:3004/api/
 
-- https://nestjs-labs.vercel.app/
-- https://nestjs-labs.vercel.app/api/
+- https://nestjs-standard.vercel.app/
+- https://nestjs-standard.vercel.app/api/
 
-- https://nestjs-labs.herokuapp.com/
-- https://nestjs-labs.herokuapp.com/api/
+- https://nestjs-standard.herokuapp.com/
+- https://nestjs-standard.herokuapp.com/api/
 
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"name":"jon","age":11,"breed":"bred"}' http://localhost:3004/cats
