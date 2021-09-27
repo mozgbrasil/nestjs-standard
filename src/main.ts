@@ -11,7 +11,7 @@ import helmet from 'helmet';
 import * as csurf from 'csurf';
 
 export function logger(req: Request, res: Response, next: NextFunction) {
-  console.table([{ logger_req: req, logger_res: res }]);
+  // console.table([{ logger_req: req, logger_res: res }]);
   console.log(`Logger Main: `);
   next();
 }
@@ -37,6 +37,8 @@ async function bootstrap() {
   //
 
   const config = new DocumentBuilder()
+    // .addBasicAuth()
+    .addBearerAuth()
     .setTitle('Cats example')
     .setDescription('The cats API description')
     .setVersion('1.0')
@@ -56,7 +58,7 @@ async function bootstrap() {
 
   //
 
-  // app.useGlobalPipes(new ValidationPipe()); // validate POST
+  app.useGlobalPipes(new ValidationPipe()); // validate POST
 
   //
 

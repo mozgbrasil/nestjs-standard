@@ -19,6 +19,7 @@ import {
 import { TerminusModule } from '@nestjs/terminus';
 import { UsersModule } from './users/users.module';
 import { RolesGuard } from './common/guards/roles.guard';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -37,10 +38,10 @@ import { RolesGuard } from './common/guards/roles.guard';
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
     },
-    // { // @TODO
-    //   provide: APP_PIPE,
-    //   useClass: ValidationPipe,
-    // },
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
     {
       provide: APP_GUARD,
       useClass: RolesGuard,
@@ -50,7 +51,6 @@ import { RolesGuard } from './common/guards/roles.guard';
     //   provide: APP_GUARD,
     //   useClass: JwtAuthGuard,
     // },
-
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggingInterceptor,
