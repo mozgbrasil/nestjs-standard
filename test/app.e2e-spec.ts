@@ -101,20 +101,20 @@ describe('AppController (e2e)', () => {
       });
   });
 
-  // it('/profile (GET)', () => {
-  //   return (
-  //     request(app.getHttpServer())
-  //       .get('/profile')
-  //       // .expect(200)
-  //       .then((res) => {
-  //         // must be then, not a callback
-  //         console.log('res: ', res.body);
-  //       })
-  //       .catch((err) => {
-  //         console.log('err: ', err);
-  //       })
-  //   );
-  // });
+  it('/profile (GET)', () => {
+    return (
+      request(app.getHttpServer())
+        .get('/profile')
+        // .expect(200)
+        .then((res) => {
+          // must be then, not a callback
+          console.log('res: ', res.body);
+        })
+        .catch((err) => {
+          console.log('err: ', err);
+        })
+    );
+  });
 
   // it('/auth/login (POST)', () => {
   //   return request(app.getHttpServer())
