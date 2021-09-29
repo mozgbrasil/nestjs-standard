@@ -127,9 +127,13 @@ $ find . -name "*.*-DISABLED" -type f
 
 👇️
 
-- Implementado RabbitMQ seguindo metodologia a seguir https://www.youtube.com/watch?v=u3qGnyPy-pk&t=80s
+# 2021-09-29
 
-Feito uso do "Interceptor" agora todas as requisição é enviada para uma fila no RabbitMQ 🙏️
+Implementado RabbitMQ seguindo metodologia a seguir https://www.youtube.com/watch?v=u3qGnyPy-pk&t=80s
+
+Feito uso do "Interceptor" armazenando reques para uma fila no RabbitMQ 🙏️
+
+@TODO: Como armazenar os retornos em fila no RabbitMQ ?
 
 Prosseguindo com os proximos passos
 

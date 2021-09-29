@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import RabbitmqServer from 'src/rabbitmq-server';
+import RabbitmqServer from '../../rabbitmq-server';
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
