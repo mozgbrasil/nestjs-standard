@@ -19,7 +19,7 @@
 # HEROKU_API_KEY:
 #
 
-name: 👇️ CI -> Vercel
+name: 👇️👉️ CI -> Vercel
 on:
   push:
     branches:
