@@ -8,6 +8,13 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import RabbitmqServer from '../../rabbitmq-server';
 
+async function publishRabbitmqServer(logHttp) {
+  console.log('IIFE: ');
+  const server = new RabbitmqServer(process.env.AMQP_URL);
+  await server.start();
+  await server.publishInQueue('queue-request-mjv', JSON.stringify(logHttp));
+}
+
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
@@ -29,12 +36,7 @@ export class LoggingInterceptor implements NestInterceptor {
     };
 
     try {
-      (async function () {
-        console.log('IIFE: ');
-        const server = new RabbitmqServer(process.env.AMQP_URL);
-        await server.start();
-        await server.publishInQueue('nest-rmq', JSON.stringify(logHttp));
-      })();
+      publishRabbitmqServer(logHttp);
     } catch (err) {
       console.log('err: ', err);
     }
