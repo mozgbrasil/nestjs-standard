@@ -14,8 +14,6 @@ import { LocalAuthGuard } from './auth/guards/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { ApiHeader } from '@nestjs/swagger';
-import RabbitmqServer from './rabbitmq-server';
-import { CreateCatDto } from './cats/dto/create-cat.dto';
 
 @Controller()
 export class AppController {
@@ -58,17 +56,4 @@ export class AppController {
   getProfile(@Request() req) {
     return req.user;
   }
-
-  // @Post('nest')
-  // async nest(@Body() createCatDto: CreateCatDto, @Request() request: Request) {
-  //   // const server = new RabbitmqServer(process.env.AMQP_URL);
-  //   // await server.start();
-  //   // await server.publishInQueue('nest-rmq', JSON.stringify(request.body));
-  //   // await server.publishInExchange(
-  //   //   'amq.direct',
-  //   //   'rota2',
-  //   //   JSON.stringify(request.body),
-  //   // );
-  //   return 'request.body';
-  // }
 }
