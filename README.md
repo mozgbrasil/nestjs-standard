@@ -4,31 +4,31 @@
 
 # nestjs-standard
 
-2409-095221
-
 - https://nestjs.com/
 
 - https://docs.nestjs.com/
 
-```
-nest --help
-nest new nestjs-standard
+```console
+$ nest --help
+$ nest new nestjs-standard
 
-yarn add joi class-validator class-transformer @nestjs/sequelize sequelize sequelize-typescript mysql2 @nestjs/typeorm typeorm @nestjs/mongoose mongoose @nestjs/config js-yaml cache-manager @nestjs/schedule @nestjs/bull bull cookie-parser @nestjs/event-emitter compression @nestjs/axios express-session hbs @nestjs/passport passport passport-local @nestjs/jwt passport-jwt @casl/ability bcrypt helmet csurf @nestjs/throttler @nestjs/graphql graphql apollo-server-express @nestjs/websockets @nestjs/platform-socket.io @nestjs/microservices redis mqtt nats amqplib amqp-connection-manager kafkajs @grpc/grpc-js @grpc/proto-loader @nestjs/swagger swagger-ui-express @nestjs/terminus
+$ yarn add joi class-validator class-transformer @nestjs/sequelize sequelize sequelize-typescript mysql2 @nestjs/typeorm typeorm @nestjs/mongoose mongoose @nestjs/config js-yaml cache-manager @nestjs/schedule @nestjs/bull bull cookie-parser @nestjs/event-emitter compression @nestjs/axios express-session hbs @nestjs/passport passport passport-local @nestjs/jwt passport-jwt @casl/ability bcrypt helmet csurf @nestjs/throttler @nestjs/graphql graphql apollo-server-express @nestjs/websockets @nestjs/platform-socket.io @nestjs/microservices redis mqtt nats amqplib amqp-connection-manager kafkajs @grpc/grpc-js @grpc/proto-loader @nestjs/swagger swagger-ui-express @nestjs/terminus
 
-yarn add @types/joi @types/sequelize @types/js-yaml @types/cron @types/cache-manager @types/bull @types/cookie-parser @types/multer @types/express-session @types/passport-local @types/passport-jwt @types/bcrypt -D
+$ yarn add @types/joi @types/sequelize @types/js-yaml @types/cron @types/cache-manager @types/bull @types/cookie-parser @types/multer @types/express-session @types/passport-local @types/passport-jwt @types/bcrypt -D
 
-nest g resource cats
+$ nest g resource cats
 
-nest g resource users
+$ nest g resource users
 
-nest g module auth
-nest g service auth
+$ nest g module auth
+$ nest g service auth
 
-nest g module casl
-nest g class casl/casl-ability.factory
+$ nest g module casl
+$ nest g class casl/casl-ability.factory
 
-nest g controller health
+$ nest g controller health
+
+$ nest g resource orders
 
 ```
 
@@ -44,12 +44,104 @@ nest g controller health
 - https://nestjs-standard.herokuapp.com/
 - https://nestjs-standard.herokuapp.com/api/
 
+## Sinopse
+
+👉️
+
+A️té o momento foi
+
+👇️
+
+Criado os seguintes repositórios
+
+- https://github.com/mozgbrasil/nestjs-monorepo/tree/develop
+- https://github.com/mozgbrasil/nestjs-standard/tree/develop
+
+👇️
+
+- Implementado CRUD Cats utilizando "Services" para armazenamento em Matriz
+- Implementado Swagger com ApiProperty
+- Implementado Middleware
+- Implementado Exception
+- Implementado Pipes Validator
+- Implementado Authentication Guards
+- Implementado Interceptors
+- Implementado CRUD Users
+- Implementado Authentication
+- Implementar Authorization
+- Implementado Cors
+- Implementado C.I. com suporte a testes automatizados e implantação na Vercel e Heroku, conforme
+- https://github.com/mozgbrasil/nestjs-standard/actions/runs/1271045049
+
+* Tests via Swagger
+
+- http://localhost:3004/api/#/default/AppController_getHello
+
+- http://localhost:3004/api/#/cats/CatsController_findAll
+- http://localhost:3004/api/#/cats/CatsController_create
+- http://localhost:3004/api/#/cats/CatsController_findAll
+
+- http://localhost:3004/api/#/default/UsersController_login_local
+
+> Request Parameters
+
+    {"username": "john", "password": "changeme"}
+
+- http://localhost:3004/api/#/default/UsersController_login_jwt
+
+> Request Parameters
+
+    {"username": "john", "password": "changeme"}
+
+> Response body
+
+    {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJzdWIiOjEsImlhdCI6MTYzMjc0NzA1MiwiZXhwIjoxNjMyNzQ3MTEyfQ.nsnfZOuxb7kTPDvAVKeMSQWyLjZfdIGlEEQHnJkMNQI"
+    }
+
+- http://localhost:3004/api/#/users/UsersController_getProfile
+
+> Response body
+
+    Download
+    {
+      "statusCode": 401,
+      "message": "Unauthorized"
+    }
+
+```console
+$ curl -X POST http://localhost:3004/auth/login/jwt -d '{"username": "john", "password": "changeme"}' -H "Content-Type: application/json"`
+
+$ curl http://localhost:3004/profile -H "Authorization: Bearer ???"
 ```
 
-curl -X POST http://localhost:3004/auth/login -d '{"username": "john", "password": "changeme"}' -H "Content-Type: application/json"
+👇️
 
-curl http://localhost:3004/profile -H "Authorization: Bearer <Bearer>"
+@TODO: CI - Test = Not Work, Arquivo renomeado com extensão "-DISABLED"
+
+```console
+$ find . -name "*.*-DISABLED" -type f
+./src/app.controller.spec.ts-DISABLED
+./src/auth/auth.service.spec.ts-DISABLED
 ```
+
+👇️
+
+- Implementado RabbitMQ seguindo metodologia a seguir https://www.youtube.com/watch?v=u3qGnyPy-pk&t=80s
+
+Feito uso do "Interceptor" agora todas as requisição é enviada para uma fila no RabbitMQ 🙏️
+
+Prosseguindo com os proximos passos
+
+👇️
+
+👇️
+
+👇️
+
+👇️
+
+👉️
 
 ## Contribuição
 
@@ -63,21 +155,19 @@ Caso queira contribuir para melhoria da documentação de um Fork no repositóri
 
 ## Executando local
 
-```
+```console
+
 git clone ☝️
 
 cd <directory>
 
 code --new-window .
+
 ```
 
 ## Executando no container
 
 - Utilize o container do Visual Studio Code
-
-## Executando na nuvem:
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/mozgbrasil/nestjs-standard/tree/develop) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/mozgbrasil/nestjs-standard/tree/develop) [![Deploy with Vercel](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mozgbrasil/nestjs-standard/tree/develop) [![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run?git_repo=https://github.com/mozgbrasil/nestjs-standard/tree/develop)
 
 # Nest
 

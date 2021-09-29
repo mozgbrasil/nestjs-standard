@@ -26,10 +26,12 @@ import {
   ApiHeader,
   ApiTags,
 } from '@nestjs/swagger';
-import { Public } from 'src/auth/guards/jwt-auth.guard';
+import { Public } from '../auth/guards/jwt-auth.guard';
 
+// @TODO: Não vi efeito
 // @ApiBasicAuth()
 // @ApiBearerAuth()
+//
 // @UseFilters(new HttpExceptionFilter())
 // @UseInterceptors(LoggingInterceptor)
 @ApiTags('cats')

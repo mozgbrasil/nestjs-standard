@@ -20,6 +20,7 @@ import { TerminusModule } from '@nestjs/terminus';
 import { UsersModule } from './users/users.module';
 import { RolesGuard } from './common/guards/roles.guard';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
     UsersModule,
     CaslModule,
     TerminusModule,
+    OrdersModule,
   ],
   controllers: [AppController, HealthController],
   providers: [

@@ -1,6 +1,7 @@
 # compiled output
 /dist
 /node_modules
+/docs/rabbitmq-javascript-nodejs/node_modules
 
 # Logs
 logs
@@ -35,5 +36,6 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 #
+.env
 .vercel
 0tmp
