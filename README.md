@@ -129,13 +129,25 @@ $ find . -name "*.*-DISABLED" -type f
 
 👇️
 
-# 2021-09-29
+Feito integração junto a Cielo no passo de transação está funcional via API
 
 Implementado RabbitMQ seguindo metodologia a seguir https://www.youtube.com/watch?v=u3qGnyPy-pk&t=80s
 
-Feito uso do "Interceptor" armazenando reques para uma fila no RabbitMQ 🙏️
+Feito uso do "Interceptor" e armazenando os requests da API para uma fila no RabbitMQ
+
+Usando RabbitMQ local e na nuvem usando o serviço cloudamqp.com
+
+Tenho uma duvida
+
+Devo armazenar as respostas da API correto ?
+
+Sabe me informar se é possivel usando o "Interceptor" pois ainda não consegui e li esse artigo mencionando que náo é possivel
+https://newbedev.com/nestjs-intercept-and-modify-outgoing-http-request
+
+Se não for possivel eu chamo o método de publicar no "RabbitMQ" para cada response
 
 @TODO: Como armazenar os retornos em fila no RabbitMQ ?
+@TODO: Consumir fila do RabbitMQ e armazenar em banco de dados
 
 Prosseguindo com os proximos passos
 

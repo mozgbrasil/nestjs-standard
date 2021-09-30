@@ -20,11 +20,9 @@ export class LoggingInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     console.log('Before...');
 
-    const [req, res] = context.getArgs();
-    var getArgs = context.getArgs();
-    var getClass = context.getClass();
-    var getHandler = context.getHandler();
-    var getType = context.getType();
+    const ctx = context.switchToHttp();
+    const req = ctx.getRequest();
+    const res = ctx.getResponse();
 
     var timestamp = new Date().getTime();
     var logHttp = {
@@ -42,8 +40,15 @@ export class LoggingInterceptor implements NestInterceptor {
     }
 
     const now = Date.now();
-    return next
-      .handle()
-      .pipe(tap(() => console.log(`After... ${Date.now() - now}ms`)));
+
+    const ret = next.handle().pipe(
+      tap(() => {
+        setTimeout(() => {
+          console.log(`After... ${Date.now() - now}ms`);
+        }, 0);
+      }),
+    );
+
+    return ret;
   }
 }
