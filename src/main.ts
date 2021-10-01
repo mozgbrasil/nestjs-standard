@@ -79,7 +79,7 @@ async function bootstrap_microservice() {
       transport: Transport.RMQ,
       options: {
         urls: [process.env.AMQP_URL],
-        queue: 'cats_queue',
+        queue: process.env.AMQP_QUEUE,
         queueOptions: {
           durable: false,
         },

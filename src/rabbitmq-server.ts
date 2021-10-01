@@ -8,21 +8,7 @@ export default class RabbitmqServer {
 
   async start(): Promise<void> {
     this.conn = await connect(this.uri);
-    this.channel = await this.conn.createChannel(function (error1, channel) {
-      if (error1) {
-        throw error1;
-      }
-
-      var queue = 'hello';
-      var msg = 'Hello World!';
-
-      channel.assertQueue(queue, {
-        durable: false,
-      });
-      channel.sendToQueue(queue, Buffer.from(msg));
-
-      console.log(' [x] Sent %s', msg);
-    });
+    this.channel = await this.conn.createChannel();
   }
 
   async publishInQueue(queue: string, message: string) {

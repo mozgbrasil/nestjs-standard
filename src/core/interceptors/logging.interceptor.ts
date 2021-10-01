@@ -12,7 +12,7 @@ async function publishRabbitmqServer(logHttp) {
   console.log('IIFE: ');
   const server = new RabbitmqServer(process.env.AMQP_URL);
   await server.start();
-  await server.publishInQueue('queue-request-mjv', JSON.stringify(logHttp));
+  await server.publishInQueue(process.env.AMQP_QUEUE, JSON.stringify(logHttp));
 }
 
 @Injectable()
