@@ -2,9 +2,7 @@
 
 ![valid XHTML][checkmark]
 
-# nestjs-standard
-
-29092021-172136
+# nestjs-standard 👉️
 
 - https://nestjs.com/
 
